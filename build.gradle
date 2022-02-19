@@ -1,52 +1,32 @@
-buildscript{
-    ext{
+buildscript {
+    ext {
         springBootVersion = '2.1.7.RELEASE'
     }
-    repositories{
+    repositories {
         mavenCentral()
         jcenter()
-
     }
-    dependencies{
+    dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
-apply plugin : 'java'
-apply plugin : 'eclipse'
-apply plugin : 'org.springframework.book'
-apply plugin : 'io.spring.dependency-management'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
-group 'org.example'
+group 'com.conatuseus.book'
 version '1.0-SNAPSHOT'
-sourceCompatibility=1.8
-
-repositories{
-    mavenCentral()
-    jcenter()
-}
-
-dependencies{
-    compile('org.springframwork.book:spring-boot-starter-web')
-    testcompile('org.springframework.boot:spring-boot-starter-test')
-}
-
-/*
-
-plugins {
-    id 'java'
-}
+sourceCompatibility = 1.8
 
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
-
-test {
-    useJUnitPlatform()
-}*/
