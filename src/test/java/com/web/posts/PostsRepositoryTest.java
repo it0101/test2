@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
+
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -36,8 +39,25 @@ public class PostsRepositoryTest {
         Posts posts = postsList.get(0);
         assertThat(posts.getTitle()).isEqualTo(title);
         assertThat(posts.getContent()).isEqualTo(content);
+    }
 
+    @Test
+    public void BaseTimeEntity_등록(){ //만든 현재 시간 호출 됨 //EnableJpaAuditing삭제시 null출력
+        LocalDateTime now = LocalDateTime.of(2021,6,4,0,0,0);
+        System.out.println("nownownownow"+now);
 
+        postsRepository.save(Posts.builder().title("title").content("content").author("author").build());
+
+        List<Posts> postsList = postsRepository.findAll();
+        System.out.println("postsList.get(0)"+postsList.get(0));
+        Posts posts=postsList.get(0);
+        System.out.println("postspostspostsposts"+posts.getCreatedDate());
+        System.out.println(">>>>>>>>> createDate="
+                +posts.getCreatedDate()+", modifiedDate = "+
+                posts.getModifiedDate());
+
+        assertThat(posts.getCreatedDate()).isAfter(now);
+        assertThat(posts.getModifiedDate()).isAfter(now);
     }
 
 }

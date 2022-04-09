@@ -8,11 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import com.domain.BaseTimeEtity;
+
 
 @Getter//getter 자동생성
 @NoArgsConstructor//기본생정자 자동 추가
 @Entity//테이블과 링크
-public class Posts {
+public class Posts extends BaseTimeEtity {
     @Id//pk
     @GeneratedValue(strategy = GenerationType.IDENTITY)//옵션 추가 시 자동 증가
     private long id;
