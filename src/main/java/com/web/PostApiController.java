@@ -19,7 +19,7 @@ public class PostApiController {
 
     @PutMapping("/api/v1/posts/{id}")
         public long update(@PathVariable Long id,  @RequestBody PostsSaveRequestDto requestDto){
-        System.out.println("idididid11111145"+id);
+        System.out.println("idididid:"+id);
         return  postsService.update(id, requestDto);
 
     }
@@ -27,7 +27,7 @@ public class PostApiController {
 
     @GetMapping("/api/v1/posts/{id}")
     public PostsResponseDto findById(@PathVariable Long id){
-        System.out.println("idididid11111145"+id);
+        System.out.println("idididid:"+id);
         return  postsService.findById(id);
 
     }
