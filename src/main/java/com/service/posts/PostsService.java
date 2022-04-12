@@ -19,12 +19,12 @@ public class PostsService {
 
     @Transactional
     public long update(Long id, PostsSaveRequestDto requestDto) {
-        System.out.println("idididid11111146"+id);
+        System.out.println("id"+id);
         Posts posts = postsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글 없음 id:" + id));
-        System.out.println("idididid11111147"+id);
+        System.out.println("idid"+id);
         posts.update(requestDto.getTitle(), requestDto.getContent());
-        System.out.println("idididid11111148"+id);
+        System.out.println("ididid"+id);
         return id;
     }
 
