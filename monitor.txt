@@ -8,7 +8,7 @@ WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(
     int minIdle     = ds.getMinIdle();
     int maxIdle     = ds.getMaxIdle();
     int maxActive   = ds.getMaxActive();
-    int numIdle     = ds.getNumIdle();
+    int numIdle     = ds.getNumIdle(); 사용되고 있지 않은 유휴
     int numActive   = ds.getNumActive();
 
 numIdle
