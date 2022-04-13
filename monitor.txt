@@ -1,3 +1,14 @@
 db3.jsp->dbcp3.jsp->dbcp.jsp
 
+WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
+    BasicDataSource ds = (BasicDataSource)ctx.getBean(dataSource);
+    
+    Date nowDate = new Date();
+    
+    int minIdle     = ds.getMinIdle();
+    int maxIdle     = ds.getMaxIdle();
+    int maxActive   = ds.getMaxActive();
+    int numIdle     = ds.getNumIdle();
+    int numActive   = ds.getNumActive();
+
 numIdle
