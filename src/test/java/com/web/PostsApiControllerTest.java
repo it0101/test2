@@ -62,25 +62,25 @@ public class PostsApiControllerTest {
         Posts savePosts = postsRepository.save(Posts.builder()
                                         .title("title")
                                         .content("content")
-                                        .author("author").build());
+                                       .author("author").build());
 
         Long updateId=savePosts.getId();
         String expectedTitle="title2";
         String expectedContent="content2";
-        System.out.println("idididid111111");
+        System.out.println("idididid");
         PostsUpdateRequestDto requestDto= PostsUpdateRequestDto.builder().title(expectedTitle)
                 .content(expectedContent).build();
 
-        System.out.println("idididid1111112");
+        System.out.println("idididid");
         String url = "http://localhost:"+port+"/api/v1/posts/"+updateId;
 
         System.out.println("urlurlurl"+url);
         HttpEntity<PostsUpdateRequestDto> requestsEntity =new HttpEntity<>(requestDto);
 
-        System.out.println("idididid1111114"+updateId);
+        System.out.println("idididid"+updateId);
         ResponseEntity<Long> responseEntity= restTemplate.exchange(url, HttpMethod.PUT, requestsEntity, Long.class);
 
-        System.out.println("idididid1111115");
+        System.out.println("idididid");
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
 
