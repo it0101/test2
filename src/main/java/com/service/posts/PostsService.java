@@ -2,6 +2,7 @@ package com.service.posts;
 import com.domain.posts.PostsRepository;
 import com.web.dto.PostsResponseDto;
 import com.web.dto.PostsSaveRequestDto;
+import com.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,7 @@ public class PostsService {
     }
 
     @Transactional
-    public long update(Long id, PostsSaveRequestDto requestDto) {
+    public long update(Long id, PostsUpdateRequestDto requestDto) {
         System.out.println("id"+id);
         Posts posts = postsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글 없음 id:" + id));
@@ -32,10 +33,22 @@ public class PostsService {
     }
 
     @Transactional
+    public long delete(Long id) {
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글 없음 id:" + id));
+        System.out.println("idid"+id);
+        postsRepository.delete(posts);
+        System.out.println("ididid"+id);
+        return id;
+    }
+
+    @Transactional
     public PostsResponseDto findById(Long id) {
+
+        System.out.println("1111111111111111111112");
         Posts entity = postsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글 없음 id:" + id));
-System.out.println("entityentity"+entity);
+System.out.println("1111111111111111111113"+entity);
         return new PostsResponseDto(entity);
     }
 
