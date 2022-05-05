@@ -7,7 +7,15 @@
                    class="btn btn-primary">글등록</a>
             </div>
         </div>
-
+{{#userName}}<!--true fals-->
+    Logged in as : <span id ="user">{{userName}}</span>
+    <a href = "/logout" class ="btn btn-info active" role="button">Logout</a><!--스프링 시큐리티 제공 -->
+{{/userName}}
+{{^userName}}<!--값이 없을때-->
+    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">
+        Google Login
+    </a><!--스프링 시큐리티 제공 -->
+{{/userName}}
         <!--출력영상-->
         <table class="table table-horizontal table-bordered">
             <thead class="thead-strong">
