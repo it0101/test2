@@ -2,3 +2,5 @@
 /shelf/
 /workspace.xml
 application-oauth.properties
+.gradle
+.idea
