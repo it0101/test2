@@ -1,11 +1,14 @@
 package com.web;
+import com.config.auth.SecurityConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
+import org.springframework.security.test.context.support.WithMockUser;
 
 import org.springframework.test.web.servlet.ResultActions;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -17,13 +20,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @RunWith(SpringRunner.class) //스프링 부트 테스트와 junit 사이 연결자
-@WebMvcTest(controllers = HelloController.class)//mvc controller 사용, service 사용 x
+@WebMvcTest(controllers = HelloController.class,
+            excludeFilters = {
+            @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes= SecurityConfig.class)
+            }
+        )//mvc controller 사용, service 사용 x
+
 public class HelloControllerTest {
 
     @Autowired // bean주입
     private MockMvc mvc; //api테스트 get,post
 
   @Test
+  @WithMockUser(roles="USER")
     public void hello가_리턴된다() throws Exception{
         String hello ="hello";
 
@@ -33,6 +42,7 @@ public class HelloControllerTest {
     }
 
     @Test
+    @WithMockUser(roles="USER")
     public void helloDto가_리턴된다() throws Exception{
         String name = "hello";
         int amount=1000;

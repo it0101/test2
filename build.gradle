@@ -39,7 +39,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-mustache'
     implementation 'org.springframework.boot:spring-boot-stater-oauth2-client'/*소셜 로그인 의존성*/
     implementation 'org.springframework.session:spring-session-jdbc'/*서버간 db로 세션공유*/
+    testImplementation 'org.springframework.session:spring-scurity-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 
