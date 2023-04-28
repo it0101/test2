@@ -1,4 +1,5 @@
 package com.web;
+import com.config.auth.LoginUser;
 import com.config.auth.dto.SessionUser;
 import com.service.posts.PostsService;
 import com.web.dto.PostsResponseDto;
@@ -18,10 +19,11 @@ public class IndexController {
 
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts",postsService.findAllDesc());
 
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");/*로그인성공시 세션에서 user*/
+        /*@LoginUser로 아래내용 대체*/
+        /*SessionUser user = (SessionUser) httpSession.getAttribute("user");*//*로그인성공시 세션에서 user*/
         if(user!=null){
             model.addAttribute("userName",user.getName());
         }
