@@ -14,6 +14,8 @@ public class PostsApiController {
 
     @PostMapping("/api/v1/posts")
     public long save(@RequestBody PostsSaveRequestDto requestDto){
+
+        System.out.println("111111");
         return  postsService.save(requestDto);
 
     }

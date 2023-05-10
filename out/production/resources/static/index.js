@@ -15,6 +15,7 @@ var main={
        });
     },
          save : function(){
+
              var data={
                  title:$('#title').val(),
                  author:$('#author').val(),
@@ -32,7 +33,10 @@ var main={
                  alert('글이 등록되었습니다');
                  window.location.href='/';
              }).fail(function (error){
-                 alert(JSON.stringify(error));
+                 if(error.status==403)
+                     alert("계정에 권한이 없습니다.");
+                 else
+                    alert(JSON.stringify(error));
              });
          },update : function(){
                         var data={
